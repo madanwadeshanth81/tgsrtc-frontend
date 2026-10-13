@@ -516,7 +516,6 @@ export default function Drivers() {
                                     <label style={{ fontSize: '0.75rem', color: '#94a3b8', display: 'block', marginBottom: '4px' }}>Staff ID *</label>
                                     <input 
                                         type="text"
-                                        placeholder="e.g. DRV013 or CND009"
                                         value={newStaff.id}
                                         onChange={(e) => setNewStaff({ ...newStaff, id: e.target.value })}
                                         style={{ width: '100%', padding: '8px 10px', background: '#1e293b', border: '1px solid #334155', borderRadius: '6px', color: '#fff' }}
@@ -540,7 +539,6 @@ export default function Drivers() {
                                 <label style={{ fontSize: '0.75rem', color: '#94a3b8', display: 'block', marginBottom: '4px' }}>Full Name *</label>
                                 <input 
                                     type="text"
-                                    placeholder="e.g. K. Narayana Rao"
                                     value={newStaff.name}
                                     onChange={(e) => setNewStaff({ ...newStaff, name: e.target.value })}
                                     style={{ width: '100%', padding: '8px 10px', background: '#1e293b', border: '1px solid #334155', borderRadius: '6px', color: '#fff' }}
@@ -553,7 +551,6 @@ export default function Drivers() {
                                     <label style={{ fontSize: '0.75rem', color: '#94a3b8', display: 'block', marginBottom: '4px' }}>Phone Number *</label>
                                     <input 
                                         type="text"
-                                        placeholder="e.g. 9876543200"
                                         value={newStaff.phone}
                                         onChange={(e) => setNewStaff({ ...newStaff, phone: e.target.value })}
                                         style={{ width: '100%', padding: '8px 10px', background: '#1e293b', border: '1px solid #334155', borderRadius: '6px', color: '#fff' }}
@@ -564,7 +561,6 @@ export default function Drivers() {
                                     <label style={{ fontSize: '0.75rem', color: '#94a3b8', display: 'block', marginBottom: '4px' }}>Depot Location</label>
                                     <input 
                                         type="text"
-                                        placeholder="e.g. MGBS, Hyderabad"
                                         value={newStaff.depotLocation}
                                         onChange={(e) => setNewStaff({ ...newStaff, depotLocation: e.target.value })}
                                         style={{ width: '100%', padding: '8px 10px', background: '#1e293b', border: '1px solid #334155', borderRadius: '6px', color: '#fff' }}
@@ -577,7 +573,6 @@ export default function Drivers() {
                                     <label style={{ fontSize: '0.75rem', color: '#94a3b8', display: 'block', marginBottom: '4px' }}>Age (yrs)</label>
                                     <input 
                                         type="number"
-                                        placeholder="e.g. 38"
                                         value={newStaff.age}
                                         onChange={(e) => setNewStaff({ ...newStaff, age: e.target.value ? parseInt(e.target.value) : '' })}
                                         style={{ width: '100%', padding: '8px 10px', background: '#1e293b', border: '1px solid #334155', borderRadius: '6px', color: '#fff' }}
@@ -587,7 +582,6 @@ export default function Drivers() {
                                     <label style={{ fontSize: '0.75rem', color: '#94a3b8', display: 'block', marginBottom: '4px' }}>Exp (yrs)</label>
                                     <input 
                                         type="number"
-                                        placeholder="e.g. 10"
                                         value={newStaff.experience}
                                         onChange={(e) => setNewStaff({ ...newStaff, experience: e.target.value ? parseInt(e.target.value) : '' })}
                                         style={{ width: '100%', padding: '8px 10px', background: '#1e293b', border: '1px solid #334155', borderRadius: '6px', color: '#fff' }}
@@ -597,7 +591,6 @@ export default function Drivers() {
                                     <label style={{ fontSize: '0.75rem', color: '#94a3b8', display: 'block', marginBottom: '4px' }}>Blood Group</label>
                                     <input 
                                         type="text"
-                                        placeholder="e.g. O+"
                                         value={newStaff.bloodGroup}
                                         onChange={(e) => setNewStaff({ ...newStaff, bloodGroup: e.target.value })}
                                         style={{ width: '100%', padding: '8px 10px', background: '#1e293b', border: '1px solid #334155', borderRadius: '6px', color: '#fff' }}
