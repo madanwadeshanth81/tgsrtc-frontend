@@ -212,63 +212,7 @@ export default function Dashboard() {
                 </div>
             </div>
 
-            {/* KPI Cards */}
-            <div className="stats-grid">
-                <div className="stat-card blue animate-slideUp stagger-1">
-                    <div className="stat-icon blue">
-                        <Users size={22} />
-                    </div>
-                    <div className="stat-value">{activeDrivers}</div>
-                    <div className="stat-label">On-Duty Drivers & Conductors</div>
-                    <div className="stat-trend neutral">
-                        <Minus size={14} /> Total Staff: {staffList.length}
-                    </div>
-                </div>
 
-                <div className="stat-card green animate-slideUp stagger-2">
-                    <div className="stat-icon green">
-                        <Bus size={22} />
-                    </div>
-                    <div className="stat-value">{activeShifts}</div>
-                    <div className="stat-label">Active Dispatched Shifts</div>
-                    <div className="stat-trend positive">
-                        <TrendingUp size={14} /> Scheduled: {summary?.scheduledShifts || 0}
-                    </div>
-                </div>
-
-                <div className="stat-card amber animate-slideUp stagger-3">
-                    <div className="stat-icon amber">
-                        <Activity size={22} />
-                    </div>
-                    <div className="stat-value">{avgFatigue}%</div>
-                    <div className="stat-label">Fleet Avg Fatigue Level</div>
-                    <div className="stat-trend neutral">
-                        <Minus size={14} /> Critical Drivers: {summary?.highFatigueCount || 0}
-                    </div>
-                </div>
-
-                <div className="stat-card red animate-slideUp stagger-4">
-                    <div className="stat-icon red">
-                        <AlertTriangle size={22} />
-                    </div>
-                    <div className="stat-value">{highRiskAlerts}</div>
-                    <div className="stat-label">Critical Fatigue Alerts</div>
-                    <div className="stat-trend negative">
-                        <ArrowUpRight size={14} /> Action Required
-                    </div>
-                </div>
-
-                <div className="stat-card purple animate-slideUp stagger-5">
-                    <div className="stat-icon purple">
-                        <Shield size={22} />
-                    </div>
-                    <div className="stat-value">{totalIncidents}</div>
-                    <div className="stat-label">Recorded Incidents</div>
-                    <div className="stat-trend positive">
-                        <TrendingDown size={14} /> Fatigue Related: {summary?.fatigueIncidents || 0}
-                    </div>
-                </div>
-            </div>
 
             {/* Charts Row 1 */}
             <div className="charts-grid" style={{ marginBottom: '1.25rem' }}>
