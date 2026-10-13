@@ -1,5 +1,7 @@
-// API Service connecting to TGSRTC Backend Server (Local Port 5001 or Live Cloud URL)
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5001/api';
+// API Service connecting to TGSRTC Backend Server (Live Render Cloud URL with fallback to local)
+const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? 'http://localhost:5001/api'
+    : 'https://tgsrtc-backend-55ma.onrender.com/api';
 
 // Helper to get auth headers if token is present
 const getAuthHeaders = () => {
