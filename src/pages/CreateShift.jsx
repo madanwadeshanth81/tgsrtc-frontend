@@ -21,9 +21,9 @@ export default function CreateShiftPage() {
         conductorId: '',
         routeId: '',
         busNumber: '',
-        date: new Date().toISOString().split('T')[0],
-        startTime: '06:00',
-        endTime: '14:00',
+        date: '',
+        startTime: '',
+        endTime: '',
         notes: ''
     })
 
@@ -36,21 +36,9 @@ export default function CreateShiftPage() {
                     api.getRoutes(),
                     api.getBuses()
                 ])
-                if (stRes.data) {
-                    setStaffList(stRes.data)
-                    const drivers = stRes.data.filter(s => s.role === 'Driver')
-                    const conductors = stRes.data.filter(s => s.role === 'Conductor')
-                    if (drivers.length) setForm(prev => ({ ...prev, driverId: drivers[0].id }))
-                    if (conductors.length) setForm(prev => ({ ...prev, conductorId: conductors[0].id }))
-                }
-                if (rtRes.data) {
-                    setRoutesList(rtRes.data)
-                    if (rtRes.data.length) setForm(prev => ({ ...prev, routeId: rtRes.data[0].id }))
-                }
-                if (busRes.data) {
-                    setBusesList(busRes.data)
-                    if (busRes.data.length) setForm(prev => ({ ...prev, busNumber: busRes.data[0].busNumber }))
-                }
+                if (stRes.data) setStaffList(stRes.data)
+                if (rtRes.data) setRoutesList(rtRes.data)
+                if (busRes.data) setBusesList(busRes.data)
             } catch (err) {
                 console.error('Failed to load form dependencies:', err)
                 setError('Failed to load system references from MariaDB.')
@@ -180,6 +168,7 @@ export default function CreateShiftPage() {
                                         style={{ width: '100%', padding: '0.65rem' }}
                                         required
                                     >
+                                        <option value="">-- Select Driver --</option>
                                         {drivers.map(d => (
                                             <option key={d.id} value={d.id}>
                                                 {d.name} ({d.id}) — Fatigue: {d.fatigueLevel}%
@@ -198,6 +187,7 @@ export default function CreateShiftPage() {
                                         style={{ width: '100%', padding: '0.65rem' }}
                                         required
                                     >
+                                        <option value="">-- Select Conductor --</option>
                                         {conductors.map(c => (
                                             <option key={c.id} value={c.id}>
                                                 {c.name} ({c.id})
@@ -225,6 +215,7 @@ export default function CreateShiftPage() {
                                         style={{ width: '100%', padding: '0.65rem' }}
                                         required
                                     >
+                                        <option value="">-- Select Route --</option>
                                         {routesList.map(r => (
                                             <option key={r.id} value={r.id}>
                                                 {r.id}: {r.name} ({r.terrain} • {r.distance} km)

@@ -35,9 +35,9 @@ export default function Dashboard() {
         conductorId: '',
         routeId: '',
         busNumber: '',
-        date: new Date().toISOString().split('T')[0],
-        startTime: '06:00',
-        endTime: '14:00',
+        date: '',
+        startTime: '',
+        endTime: '',
         notes: ''
     })
 
@@ -57,21 +57,9 @@ export default function Dashboard() {
 
             if (sumRes.kpis) setSummary(sumRes.kpis)
             if (usersRes?.data) setPassengersList(usersRes.data)
-            if (staffRes.data) {
-                setStaffList(staffRes.data)
-                const drivers = staffRes.data.filter(s => s.role === 'Driver')
-                const conductors = staffRes.data.filter(s => s.role === 'Conductor')
-                if (drivers.length && !newShift.driverId) setNewShift(prev => ({ ...prev, driverId: drivers[0].id }))
-                if (conductors.length && !newShift.conductorId) setNewShift(prev => ({ ...prev, conductorId: conductors[0].id }))
-            }
-            if (routesRes.data) {
-                setRoutesList(routesRes.data)
-                if (routesRes.data.length && !newShift.routeId) setNewShift(prev => ({ ...prev, routeId: routesRes.data[0].id }))
-            }
-            if (busRes.data) {
-                setBusesList(busRes.data)
-                if (busRes.data.length && !newShift.busNumber) setNewShift(prev => ({ ...prev, busNumber: busRes.data[0].busNumber }))
-            }
+            if (staffRes.data) setStaffList(staffRes.data)
+            if (routesRes.data) setRoutesList(routesRes.data)
+            if (busRes.data) setBusesList(busRes.data)
             if (incidentsRes.data) setIncidentsList(incidentsRes.data)
             if (alertsRes.data) setAlertsList(alertsRes.data)
             if (monthRes.data) setMonthlyData(monthRes.data)
@@ -529,6 +517,7 @@ export default function Dashboard() {
                                         style={{ width: '100%', padding: '8px 10px', background: '#1e293b', border: '1px solid #334155', borderRadius: '6px', color: '#fff' }}
                                         required
                                     >
+                                        <option value="">-- Select Driver --</option>
                                         {driversOnly.map(d => (
                                             <option key={d.id} value={d.id}>{d.name} ({d.id}) - Fatigue {d.fatigueLevel}%</option>
                                         ))}
@@ -542,6 +531,7 @@ export default function Dashboard() {
                                         style={{ width: '100%', padding: '8px 10px', background: '#1e293b', border: '1px solid #334155', borderRadius: '6px', color: '#fff' }}
                                         required
                                     >
+                                        <option value="">-- Select Conductor --</option>
                                         {staffList.filter(s => s.role === 'Conductor').map(c => (
                                             <option key={c.id} value={c.id}>{c.name} ({c.id})</option>
                                         ))}
@@ -558,6 +548,7 @@ export default function Dashboard() {
                                         style={{ width: '100%', padding: '8px 10px', background: '#1e293b', border: '1px solid #334155', borderRadius: '6px', color: '#fff' }}
                                         required
                                     >
+                                        <option value="">-- Select Route --</option>
                                         {routesList.map(r => (
                                             <option key={r.id} value={r.id}>{r.id}: {r.name} ({r.terrain})</option>
                                         ))}

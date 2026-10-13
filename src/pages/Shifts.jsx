@@ -25,21 +25,21 @@ export default function Shifts() {
         conductorId: '',
         routeId: '',
         busNumber: '',
-        date: new Date().toISOString().split('T')[0],
-        startTime: '06:00',
-        endTime: '14:00',
+        date: '',
+        startTime: '',
+        endTime: '',
         notes: ''
     })
 
-    const resetShiftForm = (driversList = staffList.filter(s => s.role === 'Driver'), conductorsList = staffList.filter(s => s.role === 'Conductor'), rList = routesList, bList = busesList) => {
+    const resetShiftForm = () => {
         setNewShift({
-            driverId: driversList[0]?.id || '',
-            conductorId: conductorsList[0]?.id || '',
-            routeId: rList[0]?.id || '',
-            busNumber: bList[0]?.busNumber || '',
-            date: new Date().toISOString().split('T')[0],
-            startTime: '06:00',
-            endTime: '14:00',
+            driverId: '',
+            conductorId: '',
+            routeId: '',
+            busNumber: '',
+            date: '',
+            startTime: '',
+            endTime: '',
             notes: ''
         })
     }
@@ -54,24 +54,9 @@ export default function Shifts() {
                 api.getBuses()
             ])
             if (shRes.data) setShiftsList(shRes.data)
-            if (stRes.data) {
-                setStaffList(stRes.data)
-                // Set default dropdown selections
-                const drivers = stRes.data.filter(s => s.role === 'Driver')
-                const conductors = stRes.data.filter(s => s.role === 'Conductor')
-                if (drivers.length && !newShift.driverId) setNewShift(prev => ({ ...prev, driverId: drivers[0].id }))
-                if (conductors.length && !newShift.conductorId) setNewShift(prev => ({ ...prev, conductorId: conductors[0].id }))
-            }
-            if (rtRes.data) {
-                setRoutesList(rtRes.data)
-                if (rtRes.data.length && !newShift.routeId) setNewShift(prev => ({ ...prev, routeId: rtRes.data[0].id }))
-            }
-            if (busRes.data) {
-                setBusesList(busRes.data)
-                if (busRes.data.length && !newShift.busNumber) {
-                    setNewShift(prev => ({ ...prev, busNumber: busRes.data[0].busNumber }))
-                }
-            }
+            if (stRes.data) setStaffList(stRes.data)
+            if (rtRes.data) setRoutesList(rtRes.data)
+            if (busRes.data) setBusesList(busRes.data)
         } catch (err) {
             console.error('Failed to load shifts:', err)
         } finally {
@@ -400,6 +385,7 @@ export default function Shifts() {
                                         style={{ width: '100%', padding: '8px 10px', background: '#1e293b', border: '1px solid #334155', borderRadius: '6px', color: '#fff' }}
                                         required
                                     >
+                                        <option value="">-- Select Driver --</option>
                                         {drivers.map(d => (
                                             <option key={d.id} value={d.id}>{d.name} ({d.id}) - Fatigue {d.fatigueLevel}%</option>
                                         ))}
@@ -413,6 +399,7 @@ export default function Shifts() {
                                         style={{ width: '100%', padding: '8px 10px', background: '#1e293b', border: '1px solid #334155', borderRadius: '6px', color: '#fff' }}
                                         required
                                     >
+                                        <option value="">-- Select Conductor --</option>
                                         {conductors.map(c => (
                                             <option key={c.id} value={c.id}>{c.name} ({c.id})</option>
                                         ))}
@@ -429,6 +416,7 @@ export default function Shifts() {
                                         style={{ width: '100%', padding: '8px 10px', background: '#1e293b', border: '1px solid #334155', borderRadius: '6px', color: '#fff' }}
                                         required
                                     >
+                                        <option value="">-- Select Route --</option>
                                         {routesList.map(r => (
                                             <option key={r.id} value={r.id}>{r.id}: {r.name} ({r.terrain})</option>
                                         ))}
