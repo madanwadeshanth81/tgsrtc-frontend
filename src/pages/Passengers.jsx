@@ -180,44 +180,7 @@ export default function Passengers() {
                 </div>
             )}
 
-            {/* KPI Overview Grid */}
-            <div className="stats-grid" style={{ marginBottom: '1.5rem' }}>
-                <div className="stat-card cyan animate-slideUp stagger-1">
-                    <div className="stat-icon cyan"><Users size={22} /></div>
-                    <div className="stat-value">{totalCount}</div>
-                    <div className="stat-label">Total Registered Commuters</div>
-                    <div className="stat-trend positive">
-                        <CheckCircle2 size={14} /> Stored in MariaDB `users`
-                    </div>
-                </div>
 
-                <div className="stat-card amber animate-slideUp stagger-2">
-                    <div className="stat-icon amber"><Phone size={22} /></div>
-                    <div className="stat-value">{verifiedPhones}</div>
-                    <div className="stat-label">Registered Mobile Logins</div>
-                    <div className="stat-trend neutral">
-                        10-Digit Verified Contacts
-                    </div>
-                </div>
-
-                <div className="stat-card green animate-slideUp stagger-3">
-                    <div className="stat-icon green"><KeyRound size={22} /></div>
-                    <div className="stat-value">{totalCount}</div>
-                    <div className="stat-label">Visible Login Passwords</div>
-                    <div className="stat-trend positive">
-                        <ShieldCheck size={14} /> Plaintext / DB Match
-                    </div>
-                </div>
-
-                <div className="stat-card purple animate-slideUp stagger-4">
-                    <div className="stat-icon purple"><Database size={22} /></div>
-                    <div className="stat-value">MariaDB</div>
-                    <div className="stat-label">Database Engine & Table</div>
-                    <div className="stat-trend neutral">
-                        Table: `users` (Port 3306)
-                    </div>
-                </div>
-            </div>
 
             {/* Search & Filter Toolbar */}
             <div className="toolbar" style={{ marginBottom: '1.25rem', display: 'flex', flexWrap: 'wrap', gap: '0.75rem', alignItems: 'center' }}>
