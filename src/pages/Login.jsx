@@ -129,13 +129,8 @@ export default function Login() {
             const res = await api.sendOtp('EMAIL', cleanEmail);
             if (res.success) {
                 setEmailOtpSent(true);
-                if (res.otp) {
-                    setEmailOtp(res.otp); // Pre-fill in Cloud Demo Mode for instant 1-click verification
-                    setSuccessMsg(`Cloud Demo Mode: Your verification code is ${res.otp}. Click 'Verify' below!`);
-                } else {
-                    setEmailOtp('');
-                    setSuccessMsg(`Verification code sent to ${cleanEmail}! Please check your email inbox.`);
-                }
+                setEmailOtp(''); // Must remain blank so user types the code received in email
+                setSuccessMsg(`Verification code sent to ${cleanEmail}! Please check your email inbox.`);
             } else {
                 setError(res.message || 'Failed to send Email OTP.');
             }
